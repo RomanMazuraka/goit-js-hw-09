@@ -70,24 +70,27 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const galleryContainer = document.querySelector('.gallery');
 
+const galleryFragment = document.createDocumentFragment();
 
 images.forEach((image) => {
-const galleryItem = document.createElement('li');
-galleryItem.classList.add('gallery-item');
+  const galleryItem = document.createElement('li');
+  galleryItem.classList.add('gallery-item');
 
-const galleryLink = document.createElement('a');
-galleryLink.classList.add('gallery-link');
-galleryLink.href = image.original;
+  const galleryLink = document.createElement('a');
+  galleryLink.classList.add('gallery-link');
+  galleryLink.href = image.original;
 
-const galleryImage = document.createElement('img');
-galleryImage.classList.add('gallery-image');
-galleryImage.src = image.preview;
-galleryImage.alt = image.description;
+  const galleryImage = document.createElement('img');
+  galleryImage.classList.add('gallery-image');
+  galleryImage.src = image.preview;
+  galleryImage.alt = image.description;
 
-galleryLink.appendChild(galleryImage);
-galleryItem.appendChild(galleryLink);
-galleryContainer.appendChild(galleryItem);
+  galleryLink.appendChild(galleryImage);
+  galleryItem.appendChild(galleryLink);
+  galleryFragment.appendChild(galleryItem);
 });
+
+galleryContainer.appendChild(galleryFragment);
 
 document.addEventListener('DOMContentLoaded', () => {
   const gallery = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });

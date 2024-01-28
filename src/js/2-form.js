@@ -1,7 +1,7 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Створення елементів форми
+
     const form = document.createElement('form');
     form.classList.add('feedback-form');
     form.setAttribute('autocomplete', 'off');
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     submitButton.setAttribute('type', 'submit');
     submitButton.textContent = 'Submit';
 
-    // Додавання створених елементів до форми
+    
     labelEmail.appendChild(inputEmail);
     labelMessage.appendChild(textareaMessage);
     
@@ -31,10 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
     form.appendChild(labelMessage);
     form.appendChild(submitButton);
 
-    // Додавання форми до body
+    
     document.body.appendChild(form);
 
-    // Логіка для збереження введених даних та їх обробки
+    
     form.addEventListener('input', (event) => {
         const fieldValue = event.target.value.trim();
         const fieldName = event.target.name;
@@ -59,7 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             localStorage.removeItem("feedback-form-state");
-            form.reset();
+
+        form.elements.email.value = '';
+        form.elements.message.value = '';
         }
     });
 });
+
+
